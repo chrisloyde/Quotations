@@ -1,0 +1,32 @@
+<!-- 
+This code will be to page that appears when the Login menu item is chosen  
+
+This form will be absorbed by the controller using the form
+
+Authors: Rick Mercer and Hassanain Jamal
+-->
+<style>
+
+</style>
+<h3>Login</h3>
+
+<form method="post">
+    Username:<span class="req"></span>
+    <input type="text" name="username" required><br>
+    Password:
+    <input type="password" name="password" required><br>
+</form>
+
+<?php
+  session_start (); // need this in any file using $_SESSION['index'];
+?>
+<p></p>
+TODO: Style this with a border, rounded edges
+<br>
+TODO: Add a form to login
+<br>
+TODO: Add client side validation to ensure text is in both input fields 
+<br>
+TODO: Add server side validation.  Notfify if login failed, clear the input fields
+<br>
+TDOO: use session_start (); and echo a message if the login failed
