@@ -40,3 +40,25 @@ h1 {
 	text-align: left;
 	width: 300px;
 }
+
+#register{
+	border-style: solid;
+	border-radius: 5px;
+	height: 100px;
+	width: 325px;
+}
+
+#reg{
+	text-align: center;
+}
+
+#login{
+	border-style: solid;
+	border-radius: 5px;
+	height: 100px;
+	width: 325px;
+}
+
+#log{
+	text-align: center;
+}
