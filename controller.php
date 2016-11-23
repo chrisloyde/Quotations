@@ -2,18 +2,8 @@
 //Authors: Chris Peterson and Beau Mejias-Brean
 session_start();
 require_once './DataBaseAdaptor.php';
-/*
-$pwd = $_POST['pwd'];
-$hashed_pwd = password_hash($pwd, PASSWORD_DEFAULT);
+$myDatabaseFunctions = new DatabaseAdaptor();
 
-function password_verify($pwd, $hash){
-    $pwd = $_POST['pwd'];
-    $hash = password_hash($pwd, PASSWORD_DEFAULT);
-
-    echo password_verify('A' . $pwd, $hash) . PHP_EOL;
-    echo password_verify($pwd, $hash) . PHP_EOL;
-}
-*/
 if (isset ( $_GET ['author'] ) && isset ( $_GET ['quote'] )) {
 	$author = $_GET ['author'];
 	$quote = $_GET ['quote'];
@@ -42,8 +32,9 @@ if (isset ( $_GET ['author'] ) && isset ( $_GET ['quote'] )) {
         session_destroy();
     }
     header ( "Location: ./index.php?mode=showQuotes" );
-}elseif (isset ($_GET['username']) && isset($_GET['pwd'])) {
-    echo "test";
+}
+/*
+elseif (isset ($_GET['username']) && isset($_GET['pwd'])) {
     $user = $_GET['username'];
     $pass = $_GET['pwd'];
 
@@ -51,7 +42,6 @@ if (isset ( $_GET ['author'] ) && isset ( $_GET ['quote'] )) {
         if (!$myDatabaseFunctions->doesUserExist($user)) {
             $myDatabaseFunctions->addUser($user, $pass);
             $_SESSION['username'] = $user;
-            $_SESSION['password'] = $pass;
             header("Location: ./index.php?mode=showQuotes");
         } else {
             header("Location: ./index.php?mode=register");
@@ -60,7 +50,6 @@ if (isset ( $_GET ['author'] ) && isset ( $_GET ['quote'] )) {
         if ($myDatabaseFunctions->doesUserExist($user)) {
             if ($myDatabaseFunctions->isPasswordCorrect($user, $pass)) {
                 $_SESSION['username'] = $user;
-                $_SESSION['password'] = $pass;
                 header("Location: ./index.php?mode=showQuotes");
             } else {
                 header("Location: ./index.php?mode=login");
@@ -69,6 +58,6 @@ if (isset ( $_GET ['author'] ) && isset ( $_GET ['quote'] )) {
             header("Location: ./index.php?mode=login");
         }
     }
-}
+}*/
 
 ?>

@@ -4,6 +4,7 @@ Authors: Chris Peterson and Beau Mejias-Brean
 
 <?php
 require_once './DataBaseAdaptor.php';
+$myDatabaseFunctions = new DatabaseAdaptor();
 $arrayOfQuotes = $myDatabaseFunctions->getQuotesAsArray ();
 ?>
 

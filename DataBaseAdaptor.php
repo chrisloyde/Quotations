@@ -60,6 +60,7 @@
 		}
 
 		public function addUser($user, $password) {
+		    $password = password_hash($password, PASSWORD_DEFAULT);
 			if (!$this->doesUserExist($user)) {
 				$stmt = $this->DB->prepare("INSERT INTO users (username, password) values(:user, :password)");
 				$stmt->bindParam('user', $user);
@@ -74,8 +75,11 @@
 			if ($this->doesUserExist($user)) {
 				$array = $this->getUsersAsArray();
 				foreach($array as $record) {
-					if ($record['username'] == $user && $record['password'] == $pass) {
-						return true;
+					if ($record['username'] == $user) {
+					    $hash = password_hash($pass, PASSWORD_DEFAULT);
+					    if (password_verify($pass, $hash)) {
+                            return true;
+                        }
 					}
 				}
 			}
@@ -103,6 +107,7 @@
 			$stmt = $this->DB->prepare ( "UPDATE quote SET isflagged=0" );
 			$stmt->execute ();
 		}
+
 		
 	} // end class DatabaseAdaptor
 
