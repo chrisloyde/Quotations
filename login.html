@@ -8,18 +8,22 @@ Authors: Rick Mercer and Hassanain Jamal
 <style>
 
 </style>
-<h3>Login</h3>
-
-<form method="post">
-    Username:<span class="req"></span>
-    <input type="text" name="username" required><br>
-    Password:
-    <input type="password" name="password" required><br>
-</form>
 
 <?php
   session_start (); // need this in any file using $_SESSION['index'];
 ?>
+
+<h3>Login</h3>
+
+<form action="controller.php" method="get">
+    Username:<span class="req"></span>
+    <input type="text" name="username" required><br>
+    Password:
+    <input type="password" name="pwd" required><br>
+    <input type="hidden" name="mode" value="login">
+    <input type="submit" value="Login">
+</form>
+
 <p></p>
 TODO: Style this with a border, rounded edges
 <br>

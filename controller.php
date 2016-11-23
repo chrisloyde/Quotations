@@ -11,8 +11,9 @@
 // unflag all quotes
 // log out
 //
+session_start();
 require_once './DataBaseAdaptor.php';
-
+/*
 $pwd = $_POST['pwd'];
 $hashed_pwd = password_hash($pwd, PASSWORD_DEFAULT);
 
@@ -23,15 +24,15 @@ function password_verify($pwd, $hash){
     echo password_verify('A' . $pwd, $hash) . PHP_EOL;
     echo password_verify($pwd, $hash) . PHP_EOL;
 }
-
-if (isset ( $_POST ['author'] ) && isset ( $_POST ['quote'] )) {
-	$author = $_POST ['author'];
-	$quote = $_POST ['quote'];
+*/
+if (isset ( $_GET ['author'] ) && isset ( $_GET ['quote'] )) {
+	$author = $_GET ['author'];
+	$quote = $_GET ['quote'];
 	$myDatabaseFunctions->addNewQuote ( $quote, $author );
 	header ( "Location: ./index.php?mode=showQuotes" );
-} elseif (isset ( $_POST ['action'] ) && isset ( $_POST ['ID'] )) {
-	$action = $_POST ['action'];
-	$ID = $_POST ['ID'];
+} elseif (isset ( $_GET ['action'] ) && isset ( $_GET ['ID'] )) {
+	$action = $_GET ['action'];
+	$ID = $_GET ['ID'];
 	if ($action === 'increase') {
 		$myDatabaseFunctions->raiseRating ( $ID );
 	}
@@ -42,5 +43,33 @@ if (isset ( $_POST ['author'] ) && isset ( $_POST ['quote'] )) {
 		$myDatabaseFunctions->flag ( $ID );
 	}
 	  header ( "Location: ./index.php?mode=showQuotes" );
+} elseif (isset ($_GET['username']) && isset($_GET['pwd'])) {
+    echo "test";
+    $user = $_GET['username'];
+    $pass = $_GET['pwd'];
+
+    if ($_GET['mode'] == "register") {
+        if (!$myDatabaseFunctions->doesUserExist($user)) {
+            $myDatabaseFunctions->addUser($user, $pass);
+            $_SESSION['username'] = $user;
+            $_SESSION['password'] = $pass;
+            header("Location: ./index.php?mode=showQuotes");
+        } else {
+            header("Location: ./register.html");
+        }
+    } elseif ($_GET['mode'] == "login") {
+        if ($myDatabaseFunctions->doesUserExist($user)) {
+            if ($myDatabaseFunctions->isPasswordCorrect($user, $pass)) {
+                $_SESSION['username'] = $user;
+                $_SESSION['password'] = $pass;
+                header("Location: ./index.php?mode=showQuotes");
+            } else {
+                header("Location: ./register.html");
+            }
+        } else {
+            header("Location: ./register.html");
+        }
+    }
 }
+
 ?>

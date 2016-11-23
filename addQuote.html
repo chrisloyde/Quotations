@@ -13,10 +13,10 @@ TODO: Style this with a border, rounded edges
 TODO: Add client side validation. Require some text in both input fields 
 <p></p>
 	
-<form action="controller.php" method="post">
-	<span class="labels">&nbsp;Quote:&nbsp;</span><textarea name="quote" cols="60" rows="5" placeholder="Enter new quote"></textarea>
+<form action="controller.php" method="get">
+	<span class="labels">&nbsp;Quote:&nbsp;</span><textarea name="quote" cols="60" rows="5" placeholder="Enter new quote" required></textarea>
     <p></p>
-	<span class="labels">Author:&nbsp;</span><input type="text" name="author" placeholder="Author">
+	<span class="labels">Author:&nbsp;</span><input type="text" name="author" placeholder="Author" required>
     <p></p>
 	<span class="labels"></span><input type="submit"  name="submit" value="Add Quote">
 </form>	

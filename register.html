@@ -9,15 +9,17 @@ Authors: Rick Mercer and Hassanain Jamal
 
 </style>
 
-session_start (); // Need this in each file before $_SESSION['key'] is used.
+<?php Session_start(); ?>
 
 <h3>Register</h3>
 
-<form method="post">
+<form action="controller.php" method="get">
     Username:<span class="req"></span>
     <input type="text" name="username" required><br>
     Password:<span class="req"></span>
     <input type="text" name="pwd" required><br>
+    <input type="hidden" name="mode" value="register">
+    <input type="submit" value="Register">
 </form>
 
 TODO: Style this with a border, rounded edges

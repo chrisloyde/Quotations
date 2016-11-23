@@ -48,6 +48,12 @@
 			$stmt->execute ();
 			return $stmt->fetchAll ( PDO::FETCH_ASSOC );
 		}
+
+		public function getUsersAsArray() {
+			$stmt = $this->DB->prepare("SELECT * FROM users");
+			$stmt->execute();
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
 		
 		// Insert a new quote into the database
 		public function addNewQuote($quote, $author) {
@@ -70,13 +76,50 @@
 			$stmt->bindParam ( 'ID', $ID );
 			$stmt->execute ();
 		}
+
+		public function addUser($user, $password) {
+			if (!$this->doesUserExist($user)) {
+				$stmt = $this->DB->prepare("INSERT INTO users (username, password) values(:user, :password)");
+				$stmt->bindParam('user', $user);
+				$stmt->bindParam('password', $password);
+				$stmt->execute();
+			} else {
+				return "user already exists";
+			}
+		}
+
+		public function isPasswordCorrect($user, $pass) {
+			if ($this->doesUserExist($user)) {
+				$array = $this->getUsersAsArray();
+				foreach($array as $record) {
+					if ($record['username'] == $user && $record['password'] == $pass) {
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
+
+		public function doesUserExist($user) {
+			$users = $this->getUsersAsArray();
+			foreach($users as $record) {
+				if ($record['username'] == $user) {
+					return true;
+				}
+			}
+			return false;
+		}
 		
 	} // end class DatabaseAdaptor
-	
+
 	$myDatabaseFunctions = new DatabaseAdaptor ();
+
 	
 	// Test code can only be used temporarily here. If kept, deleting account 'fourth' from anywhere would 
 	// cause these asserts to generate error messages. And when did you find out 'fourth' is registered?
 	// assert ( $myDatabaseFunctions->verified ( 'fourth', '4444' ) );
 	// assert ( ! $myDatabaseFunctions->canRegister ( 'fourth' ) );
+
+
 	?>

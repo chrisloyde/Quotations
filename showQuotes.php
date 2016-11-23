@@ -23,11 +23,23 @@ $arrayOfQuotes = $myDatabaseFunctions->getQuotesAsArray ();
 <!-- Add a horizontal menu -->
 
 <a href="addQuote.html">Add Quote</a>
+<a href="login.html">Login</a>
+<a href="register.html">Register</a>
 	<br>
 
 <?php
 session_start (); // Need this in each file before $_SESSION['key'] is used.
+//echo $_SESSION["username"];
 ?>
+
+<span class="login">logged in as:
+	<?php  if (isset ($_SESSION['username'])) {
+		echo $_SESSION['username'];
+	} else {
+		echo "visitor";
+	}
+	?>
+</span>
 
 <!--  Show all quotes on a separate row -->
 <?php foreach($arrayOfQuotes as $quote) { ?>
@@ -41,12 +53,12 @@ session_start (); // Need this in each file before $_SESSION['key'] is used.
      <br>
 	</p>
 <!-- http://localhost:63342/Quotations/controller.php -->
-	<form action="controller.php" method="post">
+	<form action="controller.php" method="get">
 		<input type="hidden" name="ID" value="<?= $quote['id']?>">
 		&nbsp;&nbsp;&nbsp;
 		<button name="action" value="increase">+</button>
 
-		 <span id="rating"> <?= $quote['rating']?> </span>
+		 <span id="rating"> <?= $quote['points']?> </span>
 		<button name="action" value="decrease">-</button>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	</form>
