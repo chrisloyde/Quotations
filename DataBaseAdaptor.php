@@ -44,7 +44,7 @@
 		//
 		public function getQuotesAsArray() {
 			// possible values of flagged are 't', 'f';
-			$stmt = $this->DB->prepare ( "SELECT * FROM quote WHERE isflagged='f' ORDER BY points DESC, dateadded" );
+			$stmt = $this->DB->prepare ( "SELECT * FROM quote WHERE isflagged=0 ORDER BY points DESC, dateadded" );
 			$stmt->execute ();
 			return $stmt->fetchAll ( PDO::FETCH_ASSOC );
 		}
@@ -57,7 +57,7 @@
 		
 		// Insert a new quote into the database
 		public function addNewQuote($quote, $author) {
-			$stmt = $this->DB->prepare ( "INSERT INTO quote (dateadded, quote, author, points, isflagged ) values(now(), :quote, :author, 0, 'f')" );
+			$stmt = $this->DB->prepare ( "INSERT INTO quote (dateadded, quote, author, points, isflagged ) values(now(), :quote, :author, 0, 0)" );
 			$stmt->bindParam ( 'quote', $quote );
 			$stmt->bindParam ( 'author', $author );
 			$stmt->execute ();
@@ -109,6 +109,17 @@
 				}
 			}
 			return false;
+		}
+
+		public function flag($ID) {
+			$stmt = $this->DB->prepare ( "UPDATE quote SET isflagged=1 WHERE id= :ID" );
+			$stmt->bindParam ( 'ID', $ID );
+			$stmt->execute ();
+		}
+
+		public function unflag() {
+			$stmt = $this->DB->prepare ( "UPDATE quote SET isflagged=0" );
+			$stmt->execute ();
 		}
 		
 	} // end class DatabaseAdaptor

@@ -14,7 +14,7 @@ Authors: Hassanain Jamal and Rick Mercer
 <!DOCTYPE html>
 <html>
 <head>
-<title>Rick Mercer's Quotation Service</title>
+<title>Chris and Beau's Quotation Service</title>
 <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>

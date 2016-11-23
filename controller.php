@@ -42,8 +42,18 @@ if (isset ( $_GET ['author'] ) && isset ( $_GET ['quote'] )) {
 	if ($action === 'flag') {
 		$myDatabaseFunctions->flag ( $ID );
 	}
-	  header ( "Location: ./index.php?mode=showQuotes" );
-} elseif (isset ($_GET['username']) && isset($_GET['pwd'])) {
+    header ( "Location: ./index.php?mode=showQuotes" );
+} elseif (isset ($_GET['action'])) {
+    $action = $_GET ['action'];
+    if ($action === 'unflag') {
+        $myDatabaseFunctions->unflag();
+    }
+    if ($action === 'logout') {
+        session_unset();
+        session_destroy();
+    }
+    header ( "Location: ./index.php?mode=showQuotes" );
+}elseif (isset ($_GET['username']) && isset($_GET['pwd'])) {
     echo "test";
     $user = $_GET['username'];
     $pass = $_GET['pwd'];
@@ -55,7 +65,7 @@ if (isset ( $_GET ['author'] ) && isset ( $_GET ['quote'] )) {
             $_SESSION['password'] = $pass;
             header("Location: ./index.php?mode=showQuotes");
         } else {
-            header("Location: ./register.html");
+            header("Location: ./index.php?mode=register");
         }
     } elseif ($_GET['mode'] == "login") {
         if ($myDatabaseFunctions->doesUserExist($user)) {
@@ -64,10 +74,10 @@ if (isset ( $_GET ['author'] ) && isset ( $_GET ['quote'] )) {
                 $_SESSION['password'] = $pass;
                 header("Location: ./index.php?mode=showQuotes");
             } else {
-                header("Location: ./register.html");
+                header("Location: ./index.php?mode=login");
             }
         } else {
-            header("Location: ./register.html");
+            header("Location: ./index.php?mode=login");
         }
     }
 }

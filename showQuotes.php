@@ -19,31 +19,34 @@ $arrayOfQuotes = $myDatabaseFunctions->getQuotesAsArray ();
 ?>
 
 <h1>Quotes</h1>
-
-<!-- Add a horizontal menu -->
-
-<a href="addQuote.html">Add Quote</a>
-<a href="login.html">Login</a>
-<a href="register.html">Register</a>
-	<br>
-
 <?php
-session_start (); // Need this in each file before $_SESSION['key'] is used.
-//echo $_SESSION["username"];
+session_start ();
 ?>
 
 <span class="login">logged in as:
 	<?php  if (isset ($_SESSION['username'])) {
 		echo $_SESSION['username'];
 	} else {
-		echo "visitor";
+		echo "Guest";
 	}
 	?>
 </span>
 
+<!-- Add a horizontal menu -->
+<div class="navBar">
+<a href="index.php?mode=new">Add Quote</a>
+<a href="index.php?mode=login">Login</a>
+<a href="index.php?mode=register">Register</a>
+	<?php
+	if (isset($_SESSION['username'])) {
+		echo "<a href='controller.php?action=logout'>Logout</a>";
+		echo " <a href='controller.php?action=unflag'>Unflag All</a>";
+	}
+	?>
+	<br>
+</div>
 <!--  Show all quotes on a separate row -->
 <?php foreach($arrayOfQuotes as $quote) { ?>
-
 <div class="container">
 		 <?= '"'. $quote['quote'] . '"' ?>  
      <br>
@@ -52,7 +55,7 @@ session_start (); // Need this in each file before $_SESSION['key'] is used.
      <?= $quote['author'] ?>  
      <br>
 	</p>
-<!-- http://localhost:63342/Quotations/controller.php -->
+
 	<form action="controller.php" method="get">
 		<input type="hidden" name="ID" value="<?= $quote['id']?>">
 		&nbsp;&nbsp;&nbsp;
@@ -60,6 +63,11 @@ session_start (); // Need this in each file before $_SESSION['key'] is used.
 
 		 <span id="rating"> <?= $quote['points']?> </span>
 		<button name="action" value="decrease">-</button>
+		<?php
+		if (isset($_SESSION['username'])) {
+			echo "<button name='action' value='flag'>flag</button>";
+		}
+		?>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	</form>
 
