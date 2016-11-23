@@ -25,8 +25,9 @@ h1 {
 }
 
 #rating {
-	font-size: 1.5em;
 	font-family: "Arial";
+	font-size: 1.5em;
+
 }
 
 .buttons {
@@ -41,24 +42,23 @@ h1 {
 	width: 300px;
 }
 
-#register{
+#main{
 	border-style: solid;
 	border-radius: 5px;
-	height: 100px;
+	height: 200px;
 	width: 325px;
 }
 
-#reg{
-	text-align: center;
+#but{
+	position: absolute;
+	top: 175px;
+	left: 95px;
 }
 
-#login{
-	border-style: solid;
-	border-radius: 5px;
-	height: 100px;
-	width: 325px;
-}
-
-#log{
-	text-align: center;
+#info{
+	position: absolute;
+	top: 60px;
+	left: 75px;
+	width: 150px;
+	height: 50px;
 }
