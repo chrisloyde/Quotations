@@ -11,13 +11,15 @@ Authors: Rick Mercer and Hassanain Jamal
 
 <h3>Login</h3>
 
-<form id="login" action="controller.php" method="get">
-    Username:<span class="req"></span>
-    <input type="text" name="username" required><br>
-    Password:
-    <input type="password" name="pwd" required><br><br>
-    <input type="hidden" name="mode" value="login">
-    <div id="log">
+<form id="main" action="controller.php" method="get">
+    <div id="info">
+        Username<span class="req"></span>
+        <input type="text" id="username" required><br><br>
+        Password
+        <input type="password" id="pwd" required><br><br>
+        <input type="hidden" name="mode" value="login">
+    </div>
+    <div id="but">
         <input type="submit" value="Login">
     </div>
 </form>
