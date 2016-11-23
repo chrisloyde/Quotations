@@ -44,14 +44,14 @@
 		//
 		public function getQuotesAsArray() {
 			// possible values of flagged are 't', 'f';
-			$stmt = $this->DB->prepare ( "SELECT * FROM quotations WHERE flagged='f' ORDER BY rating DESC, added" );
+			$stmt = $this->DB->prepare ( "SELECT * FROM quote WHERE isflagged='f' ORDER BY points DESC, dateadded" );
 			$stmt->execute ();
 			return $stmt->fetchAll ( PDO::FETCH_ASSOC );
 		}
 		
 		// Insert a new quote into the database
 		public function addNewQuote($quote, $author) {
-			$stmt = $this->DB->prepare ( "INSERT INTO quotations (added, quote, author, rating, flagged ) values(now(), :quote, :author, 0, 'f')" );
+			$stmt = $this->DB->prepare ( "INSERT INTO quote (dateadded, quote, author, points, isflagged ) values(now(), :quote, :author, 0, 'f')" );
 			$stmt->bindParam ( 'quote', $quote );
 			$stmt->bindParam ( 'author', $author );
 			$stmt->execute ();
@@ -59,14 +59,14 @@
 		
 		// Raise the rating of the quote with the given $ID by 1
 		public function raiseRating($ID) {
-			$stmt = $this->DB->prepare ( "UPDATE quotations SET rating=rating+1 WHERE id= :ID" );
+			$stmt = $this->DB->prepare ( "UPDATE quote SET points=points+1 WHERE id= :ID" );
 			$stmt->bindParam ( 'ID', $ID );
 			$stmt->execute ();
 		}
 		
 		// Lower the rating of the quote with the given $ID by 1
 		public function lowerRating($ID) {
-			$stmt = $this->DB->prepare ( "UPDATE quotations SET rating=rating-1 WHERE id= :ID" );
+			$stmt = $this->DB->prepare ( "UPDATE quote SET points=points-1 WHERE id= :ID" );
 			$stmt->bindParam ( 'ID', $ID );
 			$stmt->execute ();
 		}
