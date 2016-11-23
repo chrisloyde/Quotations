@@ -9,13 +9,15 @@ Authors: Rick Mercer and Hassanain Jamal
 
 <h3>Register</h3>
 
-<form id="register" action="controller.php" method="get">
-    Username:<span class="req"></span>
-    <input type="text" name="username" required><br>
-    Password:<span class="req"></span>
-    <input type="text" name="pwd" required><br><br>
-    <input type="hidden" name="mode" value="register">
-    <div id="reg">
+<form id="main" action="controller.php" method="get">
+    <div id="info">
+        Username<span class="req"></span>
+        <input type="text" id="username" required><br><br>
+        Password<span class="req"></span>
+        <input type="text" id="pwd" required><br><br>
+        <input type="hidden" name="mode" value="register">
+    </div>
+    <div id="but">
         <input type="submit" value="Register">
     </div>
 </form>
