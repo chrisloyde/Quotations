@@ -1,31 +1,21 @@
 <!-- 
 This code will be to page that appears when the Register menu item is chosen.
-
-This form will be absorbed by the controller  
-
+This form will be absorbed by the controller
 Authors: Rick Mercer and Hassanain Jamal
 -->
-<style>
-
-</style>
+<link rel="stylesheet" type="text/css" href="styles.css">
 
 <?php Session_start(); ?>
 
 <h3>Register</h3>
 
-<form action="controller.php" method="get">
+<form id="register" action="controller.php" method="get">
     Username:<span class="req"></span>
     <input type="text" name="username" required><br>
     Password:<span class="req"></span>
-    <input type="text" name="pwd" required><br>
+    <input type="text" name="pwd" required><br><br>
     <input type="hidden" name="mode" value="register">
-    <input type="submit" value="Register">
+    <div id="reg">
+        <input type="submit" value="Register">
+    </div>
 </form>
-
-TODO: Style this with a border, rounded edges
-<p></p>
-TODO: Add a form to login
-<p></p>
-TDOO: use session_start (); and echo a message if the user name is already taken
-<p></p>
-Feel free to add a first and last name in addtion to the user name and password	
