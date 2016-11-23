@@ -11,6 +11,9 @@
 	// unflagging all quotes
 	// logging out
 	//
+	// CREATE DATABASE quotes;
+	//CREATE TABLE users(id int(11) NOT NULL auto_increment, username varchar(64) NOT NULL default '', password varchar(255) NOT NULL default '', PRIMARY KEY (id), UNIQUE KEY username (username));
+	//CREATE TABLE quote(id bigint(20) NOT NULL AUTO_INCREMENT, quote varchar(255) NOT NULL default '', author varchar(64) NOT NULL default '', points bigint, dateadded varchar(255), isflagged boolean, PRIMARY KEY (id));
 	class DatabaseAdaptor {
 		// The instance variable used in every one of the functions in class DatbaseAdaptor
 		private $DB;
