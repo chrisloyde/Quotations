@@ -1,18 +1,22 @@
-<!-- Author: Chris Peterson -->
+<!-- 
+This code will be to page that appears when the Add Quote menu item is chosen  
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Quote</title>
-</head>
-<body>
-    <h3>Add a Quote</h3>
-    <form action="http://localhost:63342/CSC337/quotations/controller.php" method="get">
-        Quote:<textarea type="text" name="quote" rows="6" cols="100" required></textarea><br/>
-        Author:<input type="text" name="author"  required><br/>
-        <input type="hidden" name="mode" value="show">
-        <input type="submit" value="Save Quotation">
-    </form>
-</body>
-</html>
+This form will be absorbed by the controller  
+
+Authors: Rick Mercer and Hassanain Jamal
+-->
+
+<h3>Add a Quote</h3>
+
+TODO: Style this with a border, rounded edges
+<p></p>
+TODO: Add client side validation. Require some text in both input fields 
+<p></p>
+	
+<form action="controller.php" method="post">
+	<span class="labels">&nbsp;Quote:&nbsp;</span><textarea name="quote" cols="60" rows="5" placeholder="Enter new quote"></textarea>
+    <p></p>
+	<span class="labels">Author:&nbsp;</span><input type="text" name="author" placeholder="Author">
+    <p></p>
+	<span class="labels"></span><input type="submit"  name="submit" value="Add Quote">
+</form>	
