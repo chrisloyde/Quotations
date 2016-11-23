@@ -41,7 +41,7 @@ session_start (); // Need this in each file before $_SESSION['key'] is used.
      <br>
 	</p>
 <!-- http://localhost:63342/Quotations/controller.php -->
-	<form action="http://localhost:63342/Quotations/controller.php" method="post">
+	<form action="controller.php" method="post">
 		<input type="hidden" name="ID" value="<?= $quote['id']?>">
 		&nbsp;&nbsp;&nbsp;
 		<button name="action" value="increase">+</button>
