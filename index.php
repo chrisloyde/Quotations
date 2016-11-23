@@ -1,15 +1,5 @@
 <!-- 
-Filename: index.php
-
-This file is the page manager. It is what will load the 'home' page by default.
-If a url argument contains ?mode=addQoute, ?mode=login, or ?mode=register, a different
-HTML page will be loaded, each of which has a form.  
-
-When the form is submitted, the controller absorbs the form and redirects back to here usually.
-If an account exists or a login fails, the controller loads the appropriate form to try again.
-
-Authors: Hassanain Jamal and Rick Mercer
-
+Authors: Chris Peterson and Beau Mejias-Brean
 -->
 <!DOCTYPE html>
 <html>

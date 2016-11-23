@@ -1,16 +1,5 @@
 <?php
-// This file contains a bridge between the view and the model and redirects back to the proper page
-// with after processing whatever form this codew absorbs. This is the C in MVC, the Controller.
-//
-// Authors: Rick Mercer and Hassanain Jamal
-// 
-// TODO: Add control the new expected behavior to
-// register
-// log in
-// flag one quote
-// unflag all quotes
-// log out
-//
+//Authors: Chris Peterson and Beau Mejias-Brean
 session_start();
 require_once './DataBaseAdaptor.php';
 /*

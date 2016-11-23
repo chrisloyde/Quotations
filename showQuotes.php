@@ -1,16 +1,5 @@
 <!-- 
-This is the home page for Final Project, Part 1, Fall 2016 Quotes Enhanced.  
-
-Any user can flag quotes, add quotes, or register as a user.  If registered and logged in, the
-user can unflag all quotes to see all quotes in the data base. Yes some of the behavior is 
-contrived, in order to review many concepts in the context of a larger web service.  
-
-File name quotes.php 
-
-Show the home page view with tabs to login, registration, and to add a new quote and most importantly to
-show all unflagged quotes in the data base sorted by ranking
-    
-Author: Rick Mercer
+Authors: Chris Peterson and Beau Mejias-Brean
 -->
 
 <?php

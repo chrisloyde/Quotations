@@ -1,15 +1,5 @@
  <?php
-	// Quotes Enhanced: a Dynamic Website that is Part 1 of a final project 
-	// as a final project, except there is no AJAX in this example.
-	//
-	// Author: Rick Mercer and Hassanain Jamal
-	//
-	// TODO: Handle the two new forms for 
-	// registering 
-	// logging in
-	// flagging one quote
-	// unflagging all quotes
-	// logging out
+	// Authors: Chris Peterson and Beau Mejias-Brean
 	//
 	// CREATE DATABASE quotes;
 	// USE quotes;
@@ -33,15 +23,7 @@
 				exit ();
 			}
 		}
-		
-		// Return all quote records as an associative array.
-		// Example code to show id and flagged columns of all records:
-		// $myDatabaseFunctions = new DatabaseAdaptor();
-		// $array = $myDatabaseFunctions->getQuotesAsArray();
-		// foreach($array as $record) {
-		// echo $record['id'] . ' ' . $record['flagged'] . PHP_EOL;
-		// }
-		//
+
 		public function getQuotesAsArray() {
 			// possible values of flagged are 't', 'f';
 			$stmt = $this->DB->prepare ( "SELECT * FROM quote WHERE isflagged=0 ORDER BY points DESC, dateadded" );
@@ -123,14 +105,5 @@
 		}
 		
 	} // end class DatabaseAdaptor
-
-	$myDatabaseFunctions = new DatabaseAdaptor ();
-
-	
-	// Test code can only be used temporarily here. If kept, deleting account 'fourth' from anywhere would 
-	// cause these asserts to generate error messages. And when did you find out 'fourth' is registered?
-	// assert ( $myDatabaseFunctions->verified ( 'fourth', '4444' ) );
-	// assert ( ! $myDatabaseFunctions->canRegister ( 'fourth' ) );
-
 
 	?>
