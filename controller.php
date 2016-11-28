@@ -33,7 +33,7 @@ if (isset ( $_GET ['author'] ) && isset ( $_GET ['quote'] )) {
     }
     header ( "Location: ./index.php?mode=showQuotes" );
 }
-/*
+
 elseif (isset ($_GET['username']) && isset($_GET['pwd'])) {
     $user = $_GET['username'];
     $pass = $_GET['pwd'];
@@ -58,6 +58,6 @@ elseif (isset ($_GET['username']) && isset($_GET['pwd'])) {
             header("Location: ./index.php?mode=login");
         }
     }
-}*/
+}
 
 ?>
